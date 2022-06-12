@@ -10,13 +10,13 @@ def close():
     window.close()
 
 
-    
+
     
 
 layout = [[sg.Image('IMG_20220507_174233~3.png', size=(300,300))], [sg.popup_timed('jorsh', auto_close=True, auto_close_duration=3, image='IMG_20220507_174233~3.png')]]
 
 # Create the window
-window = sg.Window('Wow! A Josh!', layout).Finalize()
+window = sg.Window('Wow!', layout).Finalize()
 window.Maximize()
 
 
