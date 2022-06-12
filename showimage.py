@@ -1,41 +1,45 @@
-import PySimpleGUI as sg
+
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
 import time
-import threading
-
-sg.theme('DarkGrey13')
-
-
-def close():
-    time.sleep(3)
-    window.close()
-
-
-
-    
-
-layout = [[sg.Image('IMG_20220507_174233~3.png', size=(300,300))], [sg.popup_timed('jorsh', auto_close=True, auto_close_duration=3, image='IMG_20220507_174233~3.png')]]
-
-# Create the window
-window = sg.Window('Wow!', layout).Finalize()
-window.Maximize()
-
-
-while True:
-    event, values = window.read()
-    print("stuff")
+Builder.load_string('''
+<CameraClick>:
+    orientation: 'vertical'
+    Camera:
+        id: camera
+        resolution: (640, 480)
+        play: False
+    ToggleButton:
+        text: 'Play'
+        on_press: camera.play = not camera.play
+        size_hint_y: None
+        height: '48dp'
+    Button:
+        text: 'Capture'
+        size_hint_y: None
+        height: '48dp'
+        on_press: root.capture()
+''')
 
 
+class CameraClick(BoxLayout):
+    def capture(self):
+        '''
+        Function to capture the images and give them the names
+        according to their captured time and date.
+        '''
+        TestCamera.get_running_app().stop()
+        camera = self.ids['camera']
+        timestr = time.strftime("%Y%m%d_%H%M%S")
+        camera.export_to_png("IMG_{}.png".format(timestr))
+        print("Captured")
 
 
-    if event == event == sg.WIN_CLOSED:
-        break
+class TestCamera(App):
+
+    def build(self):
+        return CameraClick()
 
 
-window.close()
-
-
-
-
-
-
-
+TestCamera().run()

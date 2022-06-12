@@ -38,6 +38,7 @@ class ButtonPressApp(App):
       #self.btn1.color=(1,0,0,0.8)
       #self.btn1.text = 'Button Pressed'
       print("click")
+      import showimage
 
 MainLayout = ButtonPressApp()
 MainLayout.fullscreen = True
