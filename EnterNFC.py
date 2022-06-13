@@ -25,6 +25,12 @@ input = values[0]
 try:
 
     y = json.loads(input)
+
+except:
+    print("Failureexcet")
+    sg.popup_auto_close('Credentials incorrect.Try using your actual tag.')
+    #os.system('python3 MainScreen.py')
+else:
     password = (y["p"]) 
     username = (y["u"]) 
     print(password)
@@ -39,13 +45,9 @@ try:
 
     if success == True:
         print("Good job")
-        playsound('audio.mp3')
+        #playsound('audio.mp3')
         os.system('python3 showimage.py')
         #Release snack
     else:
         print("Failure")
-except:
-    print("Failure")
-    sg.popup_auto_close('Credentials incorrect.Try using your actual tag.')
-    #os.system('python3 MainScreen.py')
 window.close()
