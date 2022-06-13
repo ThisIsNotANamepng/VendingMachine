@@ -7,6 +7,7 @@ import os
 
 
 
+
 class ButtonPressApp(App):
    def __init__(self):
       super(ButtonPressApp, self).__init__()
@@ -42,7 +43,7 @@ class ButtonPressApp(App):
       #self.btn1.color=(1,0,0,0.8)
       #self.btn1.text = 'Button Pressed'
       print("click")
-      os.system('python3 showimage.py')
+      os.system('python3 EnterNFC.py')
 
 MainLayout = ButtonPressApp()
 MainLayout.fullscreen = True
